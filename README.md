@@ -5,23 +5,24 @@ The Homebrew cask now lives in [fengmk2/projj-desktop](https://github.com/fengmk
 For a new installation:
 
 ```sh
-brew tap fengmk2/tap https://github.com/fengmk2/projj-desktop.git
-brew install --cask fengmk2/tap/projj-desktop
+brew tap fengmk2/projj-desktop https://github.com/fengmk2/projj-desktop.git
+brew install --cask fengmk2/projj-desktop/projj-desktop
 ```
 
-If you already use this tap, replace its checkout first:
+If you installed the app through this tap, migrate to the dedicated tap:
 
 ```sh
-brew tap --custom-remote fengmk2/tap https://github.com/fengmk2/projj-desktop.git
-brew update-reset "$(brew --repository fengmk2/tap)"
-brew install --cask fengmk2/tap/projj-desktop
+brew uninstall --cask fengmk2/tap/projj-desktop
+brew untap fengmk2/tap
+brew tap fengmk2/projj-desktop https://github.com/fengmk2/projj-desktop.git
+brew install --cask fengmk2/projj-desktop/projj-desktop
 ```
 
-This replaces the tap checkout, including any local cask edits. It preserves the installed app, CLI, `~/.projj` configuration, and your repositories. Future updates use the same command:
+This reinstalls the app and CLI while preserving `~/.projj` configuration and your repositories. Future updates use:
 
 ```sh
 brew update
-brew upgrade --cask fengmk2/tap/projj-desktop
+brew upgrade --cask fengmk2/projj-desktop/projj-desktop
 ```
 
 See the [installation instructions](https://github.com/fengmk2/projj-desktop#homebrew-macos) for platform requirements and options.
